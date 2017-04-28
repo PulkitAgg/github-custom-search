@@ -1,0 +1,66 @@
+<p>
+  git-repo works!
+</p>
+<div class="well well-sm">
+  <label>GitHub Name</label><br>
+  <input type="text" #username><br><br>
+  <button class="btn btn-success" (click)="onClick(username.value)"> Get Details</button>
+</div>
+
+<div *ngIf="buttonCheck && !error">
+
+  <div class="well well-sm">
+
+    <h3 align="center"> {{userRepo[0].owner.login }} 's Repositories</h3>
+
+    <table class="table">
+      <tr>
+        <td>GitHub Id</td>
+        <td> {{userRepo.id}} </td>
+      </tr>
+
+      <tr *ngIf="!(this.userRepo.name==null)">
+        <td>Name</td>
+        <td>{{userRepo.name}}</td>
+      </tr>
+
+      <tr  *ngIf="!(this.userRepo.email==null)">
+        <td>Email Id</td>
+        <td> {{userRepo.email}} </td>
+      </tr >
+
+      <tr *ngIf="!(this.userRepo.company==null)">
+        <td>Company</td>
+        <td> {{userRepo.company}} </td>
+      </tr>
+
+      <tr *ngIf="!(this.userRepo.location==null)">
+        <td>Location</td>
+        <td> {{userRepo.location}} </td>
+      </tr>
+
+      <tr *ngIf="!(this.userRepo.bio==null)">
+        <td>Biography</td>
+        <td> {{userRepo.bio}} </td>
+      </tr>
+
+      <tr>
+        <td>Following</td>
+        <td> {{userRepo.following}} </td>
+      </tr>
+      <tr>
+        <td>Followers</td>
+        <td> {{userRepo.followers}}  </td>
+      </tr>
+      <tr>
+        <td>Account Created At</td>
+        <td> {{userRepo.created_at}} </td>
+      </tr>
+      <tr>
+        <td>Account Updated At</td>
+        <td> {{userRepo.updated_at}} </td>
+      </tr>
+    </table>
+
+  </div>
+</div>

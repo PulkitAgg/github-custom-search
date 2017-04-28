@@ -1,0 +1,66 @@
+<h3 align="center">Welcome To Git Search App</h3>
+
+<div class="well well-sm">
+  <label>GitHub Name</label><br>
+  <input type="text" #username><br><br>
+  <button class="btn btn-success" (click)="onClick(username.value)"> Get Details</button>
+</div>
+
+<!-- User Information On Click -->
+<div *ngIf="buttonCheck && !error">
+
+  <div class="well well-sm">
+
+    <h3 align="center"> {{userData.login}} 's Details</h3>
+
+    <table class="table">
+      <tr>
+        <td>GitHub Id</td>
+        <td> {{userData.id}} </td>
+      </tr>
+
+      <tr *ngIf="!(this.userData.name==null)">
+        <td>Name</td>
+        <td>{{userData.name}}</td>
+      </tr>
+
+      <tr  *ngIf="!(this.userData.email==null)">
+        <td>Email Id</td>
+        <td> {{userData.email}} </td>
+      </tr >
+
+      <tr *ngIf="!(this.userData.company==null)">
+        <td>Company</td>
+        <td> {{userData.company}} </td>
+      </tr>
+
+      <tr *ngIf="!(this.userData.location==null)">
+        <td>Location</td>
+        <td> {{userData.location}} </td>
+      </tr>
+
+      <tr *ngIf="!(this.userData.bio==null)">
+        <td>Biography</td>
+        <td> {{userData.bio}} </td>
+      </tr>
+
+      <tr>
+        <td>Following</td>
+        <td> {{userData.following}} </td>
+      </tr>
+      <tr>
+        <td>Followers</td>
+        <td> {{userData.followers}}  </td>
+      </tr>
+      <tr>
+        <td>Account Created At</td>
+        <td> {{userData.created_at}} </td>
+      </tr>
+      <tr>
+        <td>Account Updated At</td>
+        <td> {{userData.updated_at}} </td>
+      </tr>
+    </table>
+
+  </div>
+</div>
