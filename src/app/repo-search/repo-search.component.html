@@ -1,0 +1,70 @@
+<h3 align="center">Search Any Repository</h3>
+<div class="well well-sm">
+  <label>Repository Name</label><br>
+  <input type="text" #username><br><br>
+  <button class="btn btn-success" (click)="onClick(username.value)"> Get Details</button>
+</div>
+
+<div *ngIf="buttonCheck && !error">
+
+  <div class="well well-sm">
+
+    <h5 align="center">{{repoInfo.total_count}} matches found.</h5>
+    <h3 align="center">Top Rank Repository Information</h3>
+    <table class="table">
+      <!-- <div class="table" *ngFor="let row of repoInfo"> -->
+      <!-- <tr>
+        <td>Total Number Of Project On Github</td>
+        <td> {{repoInfo.total_count}} </td>
+      </tr> -->
+
+        <tr>
+          <td>Repository Id</td>
+          <td> {{repoInfo.items[0].id}} </td>
+        </tr>
+
+        <tr>
+          <td>Repository Holder Name</td>
+          <td> {{repoInfo.items[0].owner.login}} </td>
+        </tr>
+
+        <tr>
+          <td>Repository Type</td>
+          <td *ngIf="repoInfo.items[0].private==false"> Public Repository </td>
+          <td *ngIf="repoInfo.items[0].private==true"> Private Repository </td>
+        </tr>
+
+        <tr *ngIf="!(repoInfo.items[0].language==null)">
+          <td>Language Used</td>
+          <td> {{repoInfo.items[0].language}} </td>
+        </tr>
+
+        <tr>
+          <td>No of Forks</td>
+          <td> {{repoInfo.items[0].forks_count}} </td>
+        </tr>
+
+        <tr>
+          <td>Size Of Repository</td>
+          <td> {{repoInfo.items[0].size}} Bytes </td>
+        </tr>
+
+        <tr>
+          <td>Repository Created At</td>
+          <td> {{repoInfo.items[0].created_at}} </td>
+        </tr>
+
+        <tr>
+          <td>Repository Updated At</td>
+          <td> {{repoInfo.items[0].updated_at}} </td>
+        </tr>
+
+        <tr>
+          <td> Reach Repository At</td>
+          <td><a href="{{repoInfo.items[0].html_url}}" target="_blank" >Go to repositroy</a></td>
+        </tr>
+      <!-- </div> -->
+    </table>
+
+  </div>
+</div>

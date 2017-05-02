@@ -1,8 +1,6 @@
-<p>
-  git-repo works!
-</p>
+<h3 align="center">Search User Repositories</h3>
 <div class="well well-sm">
-  <label>GitHub Name</label><br>
+  <label>Repository Holder Name</label><br>
   <input type="text" #username><br><br>
   <button class="btn btn-success" (click)="onClick(username.value)"> Get Details</button>
 </div>
@@ -14,52 +12,52 @@
     <h3 align="center"> {{userRepo[0].owner.login }} 's Repositories</h3>
 
     <table class="table">
-      <tr>
-        <td>GitHub Id</td>
-        <td> {{userRepo.id}} </td>
-      </tr>
+      <div class="table" *ngFor="let row of userRepo">
+        <tr>
+          <td>Repository Id</td>
+          <td> {{row.id}} </td>
+        </tr>
 
-      <tr *ngIf="!(this.userRepo.name==null)">
-        <td>Name</td>
-        <td>{{userRepo.name}}</td>
-      </tr>
+        <tr *ngIf="!(row.name==null)">
+          <td> Repository Name</td>
+          <td>{{row.name}}</td>
+        </tr>
 
-      <tr  *ngIf="!(this.userRepo.email==null)">
-        <td>Email Id</td>
-        <td> {{userRepo.email}} </td>
-      </tr >
+        <tr>
+          <td>Repository Type</td>
+          <td *ngIf="row.private==false"> Public Repository </td>
+          <td *ngIf="row.private==true"> Private Repository </td>
+        </tr>
 
-      <tr *ngIf="!(this.userRepo.company==null)">
-        <td>Company</td>
-        <td> {{userRepo.company}} </td>
-      </tr>
+        <tr *ngIf="!(row.language==null)">
+          <td>Language Used</td>
+          <td> {{row.language}} </td>
+        </tr>
 
-      <tr *ngIf="!(this.userRepo.location==null)">
-        <td>Location</td>
-        <td> {{userRepo.location}} </td>
-      </tr>
+        <tr>
+          <td>No of Forks</td>
+          <td> {{row.forks_count}} </td>
+        </tr>
 
-      <tr *ngIf="!(this.userRepo.bio==null)">
-        <td>Biography</td>
-        <td> {{userRepo.bio}} </td>
-      </tr>
+        <tr>
+          <td>Size Of Repository</td>
+          <td> {{row.size}} Bytes </td>
+        </tr>
 
-      <tr>
-        <td>Following</td>
-        <td> {{userRepo.following}} </td>
-      </tr>
-      <tr>
-        <td>Followers</td>
-        <td> {{userRepo.followers}}  </td>
-      </tr>
-      <tr>
-        <td>Account Created At</td>
-        <td> {{userRepo.created_at}} </td>
-      </tr>
-      <tr>
-        <td>Account Updated At</td>
-        <td> {{userRepo.updated_at}} </td>
-      </tr>
+        <tr>
+          <td>Repository Created At</td>
+          <td> {{row.created_at}} </td>
+        </tr>
+        <tr>
+          <td>Repository Updated At</td>
+          <td> {{row.updated_at}} </td>
+        </tr>
+
+        <tr>
+          <td> Reach Repository At</td>
+          <td> <a href="{{row.html_url}}" target="_blank" >Go to repositroy</a> </td>
+        </tr>
+      </div>
     </table>
 
   </div>

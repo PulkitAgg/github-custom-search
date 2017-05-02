@@ -16,19 +16,20 @@ export class GitRepoComponent implements OnInit {
 
   onClick(name) {
     this.gitRef.setName(name);
-    // this.gitRef.check();
-    // console.log(this.gitRef.getName()==null);
-    this.gitRef.getRepoInfo().subscribe(data => {
-      this.userRepo = data
+
+    this.gitRef.getUserRepoInfo().subscribe(data => {
+      this.userRepo = data;
       this.buttonCheck = true;
       this.error = false;
-      // console.log(this.userRepo);
+      //  console.log(this.userRepo);
     },
       err => {
         this.error = true;
         this.buttonCheck = false;
-
+        // console.log(this.gitRef.getName() + " is not found");
+        // console.log("My ckjdsbj")
         alert(this.gitRef.getName() + " is not found");
+        // alert("hello");
       }
 
     );

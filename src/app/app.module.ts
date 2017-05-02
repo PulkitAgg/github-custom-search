@@ -8,12 +8,16 @@ import { GitRepoComponent } from './git-repo/git-repo.component';
 import { HomeComponent } from './home/home.component';
 import {Routes,RouterModule} from '@angular/router';
 import { GitService } from './git.service';
+import { RepoSearchComponent } from './repo-search/repo-search.component';
 const routes:Routes =[
   {
     path: "home", component: HomeComponent
   },
   {
-    path : "repo-info" , component: GitRepoComponent
+    path : "user-repo-info" , component: GitRepoComponent
+  },
+  {
+    path : "repo-info" , component: RepoSearchComponent
   },
   {
     path: "**" , component: HomeComponent
@@ -23,7 +27,8 @@ const routes:Routes =[
   declarations: [
     AppComponent,
     GitRepoComponent,
-    HomeComponent
+    HomeComponent,
+    RepoSearchComponent
   ],
   imports: [
     BrowserModule,
